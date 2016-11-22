@@ -1,0 +1,13 @@
+version: 0.0
+os: linux
+files:
+  - source: ./
+    destination: /var/www/deploy/
+hooks:
+  AfterInstall:
+    - location: scripts/wordpress_deploy.sh
+      timeout: 300
+      runas: git
+    - location: scripts/theme_deploy.sh
+      timeout: 300
+      runas: git

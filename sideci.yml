@@ -1,0 +1,12 @@
+linter:
+  code_sniffer:
+    options:
+      standard: PSR2
+      ignore: vendor
+  phpmd:
+    options:
+      rule: codesize,naming,custom_rule.xml
+      ignore: vendor
+  eslint:
+    options:
+      config: ".eslintrc"

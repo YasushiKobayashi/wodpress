@@ -1,0 +1,36 @@
+@charset "UTF-8";
+$kakugo: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ, Osaka, 'MS PGothic', arial, helvetica, sans-serif;
+$mintyo: "ヒラギノ明朝 ProN W6", "游明朝", YuMincho, "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
+
+/*
+ *
+ 
+ */
+@mixin bg_cover($img, $expanded) {
+	background-image: url(../img/#{$img}.#{$expanded});
+	background-size: auto 100%;
+	background-repeat: repeat-x;
+}
+
+@mixin bg_cover($img, $expanded) {
+	background-image: url(../img/#{$img}.#{$expanded});
+	background-size: auto 100%;
+	background-repeat: repeat-x;
+}
+
+@mixin kadomaru($value) {
+	-moz-border-radius: $value;
+	-webkit-border-radius: $value;
+	border-radius: $value;
+}
+
+@mixin max-screen($break-point) {
+	@media screen and (max-width: $break-point) {
+		@content;
+	}
+}
+@mixin min-screen($break-point) {
+	@media screen and (min-width: $break-point) {
+		@content;
+	}
+}

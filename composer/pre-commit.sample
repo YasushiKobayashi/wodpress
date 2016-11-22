@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+PATH="/usr/local/bin:$PATH"
+composer/bin/phpcs --report=diff --report-file=composer/phpcs.dif --standard=composer/ruleset.xml --ignore=*.js,*.css ./wordpress/wp-content/themes/wp-themes/
+error=`grep -c '' composer/phpcs.dif`
+if [ $error -gt 1 ] ; then
+  echo 'phpに構文エラーがある可能性があります。./composer/phpcs.difを確認してください。'
+  exit 1
+fi

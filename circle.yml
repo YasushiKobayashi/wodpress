@@ -1,0 +1,36 @@
+machine:
+  timezone: Asia/Tokyo
+  php:
+    version: 7.0.4
+  node:
+    version:  6.7.0
+  hosts:
+    wordpress.dev: 127.0.0.1
+  post:
+    - npm install -g npm@3
+
+dependencies:
+  pre:
+    # No password is required for the MySQL user `ubuntu`
+    - mysql -u ubuntu -e "create database wordpress"
+
+    # setup wordpress
+    - curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+    - chmod +x wp-cli.phar
+    - php wp-cli.phar core config --dbname=wordpress --dbuser=ubuntu --dbhost=127.0.0.1 --path=wordpress
+    - php wp-cli.phar core install --allow-root --admin_name=admin --admin_password=admin --admin_email=admin@example.com --url=http://wordpress.dev:8080 --title=WordPress --path=wordpress
+    - php wp-cli.phar theme activate wp-themes --path=wordpress
+
+    # setup composer
+    - cd composer && curl -sS https://getcomposer.org/installer | php
+    - cd composer && php composer.phar install
+
+    # setup node
+    - npm install -g eslint gulp-scss-lint
+    - npm install -g webpack bower phantomjs gulp coffee babel
+    - cd wordpress/wp-content/themes/wp-themes && npm install
+test:
+  override:
+    - ./composer/bin/phpcs --report=diff --standard=./composer/ruleset.xml --ignore=*.js,*.css,*.scss wordpress/wp-content/themes/wp-themes/
+    - cd wordpress/wp-content/themes/wp-themes && gulp sass
+    - exit 0
