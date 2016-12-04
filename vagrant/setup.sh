@@ -39,25 +39,8 @@ fi
 sudo yum -y install mysql mysql-server mysql-devel
 sudo service mysqld start
 sudo chkconfig mysqld on
-expect -c "
-spawn mysql_secure_installation
-expect \"Enter current password for root (enter for none):\"
-send -- \"\n\"
-expect \"Set root password? [Y/n]\"
-send -- \"Y\n\"
-expect \"New password:\"
-send -- \"vagrant\n\"
-expect \"Re-enter new password:\"
-send -- \"vagrant\n\"
-expect \"Remove anonymous users? [Y/n]\"
-send -- \"Y\n\"
-expect \"Disallow root login remotely? [Y/n]\"
-send -- \"Y\n\"
-expect \"Remove test database and access to it? [Y/n]\"
-send -- \"Y\n\"
-expect \"Thanks for using MySQL!\"
-send -- \"exit\n\"
-"
+mysql -u root -e "create database wordpress default charset utf8"
+
 
 #install composer
 curl -sS https://getcomposer.org/installer | php
@@ -68,4 +51,7 @@ cd /var/www/html
 curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 php wp-cli.phar --info
 chmod +x wp-cli.phar
-#./wp-cli.phar core download  --locale=ja --path=/var/www/html
+# php wp-cli.phar core download --locale=ja --path=/var/www/html
+php wp-cli.phar core config --dbname=wordpress --dbuser=root --dbhost=127.0.0.1 --path=/var/www/html
+php wp-cli.phar core install --admin_name=admin --admin_password=admin --admin_email=admin@example.com --url=http://192.168.34.60 --title=WordPress --path=/var/www/html
+php wp-cli.phar theme activate wp-themes --path=/var/www/html
