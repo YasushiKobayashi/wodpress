@@ -51,6 +51,7 @@ curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.pha
 php wp-cli.phar --info
 chmod +x wp-cli.phar
 # php wp-cli.phar core download --locale=ja --path=/var/www/html
-php wp-cli.phar core config --dbname=wordpress --dbuser=root --dbhost=127.0.0.1 --path=/var/www/html
-php wp-cli.phar core install --admin_name=admin --admin_password=admin --admin_email=admin@example.com --url=http://192.168.34.60 --title=WordPress --path=/var/www/html
-php wp-cli.phar theme activate wp-themes --path=/var/www/html
+php wp-cli.phar core config --dbname=wordpress --dbuser=root --dbhost=127.0.0.1 --path=/var/www/html/wordpress
+php wp-cli.phar core install --admin_name=admin --admin_password=admin --admin_email=admin@example.com --url=http://192.168.33.70 --title=WordPress --path=/var/www/html/wordpress
+php wp-cli.phar theme activate wp-themes --path=/var/www/html/wordpress
+mv wp-cli.phar /var/www/html

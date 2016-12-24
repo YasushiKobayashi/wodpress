@@ -26,9 +26,10 @@ dependencies:
     - cd composer && php composer.phar install
 
     # setup node
-    - npm install -g eslint gulp-scss-lint
+    - npm install -g eslint gulp-scss-lint selenium-webdriver yarn
     - npm install -g webpack bower phantomjs gulp coffee babel
-    - cd wordpress/wp-content/themes/wp-themes && npm install
+    - cd wordpress/wp-content/themes/wp-themes && yarn install
+    - cd selenium && npm install
 test:
   override:
     - ./composer/bin/phpcs --report=diff --standard=./composer/ruleset.xml --ignore=*.js,*.css,*.scss wordpress/wp-content/themes/wp-themes/
