@@ -1,0 +1,21 @@
+{
+  "name": "selenuum",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "dependencies": {
+    "phantomjs": "^2.1.7",
+    "selenium-webdriver": "^3.0.1"
+  },
+  "devDependencies": {
+    "moment": "^2.17.0",
+    "phantomjs": "^2.1.7",
+    "selenium-webdriver": "^3.0.1",
+    "webdriverio": "^4.4.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

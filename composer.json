@@ -1,9 +1,0 @@
-{
-    "require-dev": {
-        "phing/phing": "*",
-        "squizlabs/php_codesniffer": "*"
-    },
-    "config": {
-        "bin-dir" : "bin/"
-    }
-}

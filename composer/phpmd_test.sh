@@ -1,2 +1,2 @@
 #!/bin/sh
-phpmd ../wp-content/themes/kyoen text codesize,ruleset.xml
+phpmd ../wordpress/wp-content/themes/wp-themes/ text codesize,controversial,design,naming,unusedcode
