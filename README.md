@@ -3,8 +3,8 @@
 
 ### update
 ```
-php wp-cli.phar core update --all --path=wordpress
-php wp-cli.phar plugin update --all --path=wordpress
+./wp-cli.phar core update --path=wordpress
+./wp-cli.phar plugin update --all --path=wordpress
 ```
 
 ### 仕様プラグイン・仕様テーマ

@@ -1,5 +1,5 @@
 <?php
-define('WP_RP_VERSION', '3.6');
+define('WP_RP_VERSION', '3.6.3');
 
 define('WP_RP_PLUGIN_FILE', plugin_basename(__FILE__));
 
@@ -112,9 +112,9 @@ function wp_rp_get_platform_options() {
 	$thumb_options = array('custom_size_thumbnail_enabled' => false);
 
 	if (!empty($options['custom_size_thumbnail_enabled'])) {
-		// $thumb_options['custom_size_thumbnail_enabled'] = $options['custom_size_thumbnail_enabled'];
-		// $thumb_options['custom_thumbnail_width'] = $options['custom_thumbnail_width'];
-		// $thumb_options['custom_thumbnail_height'] = $options['custom_thumbnail_height'];
+		$thumb_options['custom_size_thumbnail_enabled'] = $options['custom_size_thumbnail_enabled'];
+		$thumb_options['custom_thumbnail_width'] = $options['custom_thumbnail_width'];
+		$thumb_options['custom_thumbnail_height'] = $options['custom_thumbnail_height'];
 	}
 	return $options['desktop'] + $thumb_options;
 }
@@ -186,7 +186,7 @@ function wp_rp_ajax_load_articles_callback() {
 				'excerpt' => $excerpt,
 				'date' => $related_post->post_date,
 				'comments' => $related_post->comment_count,
-				'img' => get_the_post_thumbnail($related_post->ID)
+				'img' => wp_rp_get_post_thumbnail_img($related_post, $image_size)
 			));
 	}
 
@@ -327,12 +327,9 @@ function wp_rp_generate_related_posts_list_items($related_posts, $selected_relat
 
 		$post_url = property_exists($related_post, 'post_url') ? $related_post->post_url : get_permalink($related_post->ID);
 
-		$img = get_the_post_thumbnail($related_post->ID);
+		$img = wp_rp_get_post_thumbnail_img($related_post, $image_size);
 		if ($img) {
-			$output .=  '<span><a href="' . $post_url . '" class="wp_rp_thumbnail">' . $img . '</a></span>';
-		} else {
-			$img = '<img src="'.get_template_directory_uri().'/images/no_image.png" />';
-			$output .=  '<span><a href="' . $post_url . '" class="wp_rp_thumbnail">' . $img . '</a></span>';
+			$output .=  '<a href="' . $post_url . '" class="wp_rp_thumbnail">' . $img . '</a>';
 		}
 
 		if ($platform_options["display_publish_date"]) {
@@ -448,12 +445,13 @@ function wp_rp_head_resources() {
 
 	$output .= "<script type=\"text/javascript\">\n" . $output_vars . "</script>\n";
 
-	$output .= '<script type="text/javascript" src="' . WP_RP_STATIC_BASE_URL . WP_RP_STATIC_LOADER_FILE . '?version=' . WP_RP_VERSION . '" async></script>' . "\n";
-
 	$static_url = plugins_url('static/', __FILE__);
 	$theme_url = plugins_url(WP_RP_STATIC_THEMES_PATH, __FILE__);
 
 	if ($options['enable_themes']) {
+		if ($platform_options['theme_name'] !== 'plain.css' && $platform_options['theme_name'] !== 'm-plain.css') {
+			$output .= '<link rel="stylesheet" href="' . $theme_url . $platform_options['theme_name'] . '?version=' . WP_RP_VERSION . '" />' . "\n";
+		}
 
 		if ($platform_options['theme_name'] === 'm-stream.css') {
 			wp_enqueue_script('wp_rp_infiniterecs', $static_url . WP_RP_STATIC_INFINITE_RECS_JS_FILE, array('jquery'), WP_RP_VERSION);
@@ -468,6 +466,10 @@ function wp_rp_head_resources() {
 		$output .= '<style type="text/css">' . "\n" . $platform_options['theme_custom_css'] . "</style>\n";
 	}
 
+	if (current_user_can('edit_posts')) {
+		wp_enqueue_style('wp_rp_edit_related_posts_css', $theme_url . 'edit_related_posts.css', array(), WP_RP_VERSION);
+		wp_enqueue_script('wp_rp_edit_related_posts_js', $static_url . 'js/edit_related_posts.js', array('jquery'), WP_RP_VERSION);
+	}
 
 	echo $output;
 }
@@ -527,7 +529,7 @@ function wp_rp_get_related_posts($before_title = '', $after_title = '') {
 		$posts_footer .= '<div class="wp_rp_footer"><a class="wp_rp_edit" href="#" id="wp_rp_edit_related_posts">Edit Related Posts</a></div>';
 	}
 	if ($options['display_zemanta_linky']) {
-		$posts_footer .= '<div class="wp_rp_footer"><a class="wp_rp_backlink" target="_blank" href="http://www.zemanta.com/?wp-related-posts" rel="nofollow">Zemanta</a></div>';
+		$posts_footer .= '<div class="wp_rp_footer"><a class="wp_rp_backlink" target="_blank" href="http://www.sovrn.com/" rel="nofollow">Sovrn</a></div>';
 	}
 
 	$css_classes = 'related_post wp_rp';

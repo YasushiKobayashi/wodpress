@@ -23,7 +23,6 @@ sudo yum -y install httpd
 sudo cp -a /vagrant/httpd.conf /etc/httpd/conf/
 sudo service httpd start
 sudo chkconfig httpd on
-sudo chown -R vagrant:vagrant /var/www/html
 
 #install node
 DIR="/home/vagrant/.nvm"
@@ -44,7 +43,7 @@ mysql -u root -e "create database wordpress default charset utf8"
 
 #install composer
 curl -sS https://getcomposer.org/installer | php
-sudo mv composer.phar /usr/local/bin/composer
+mv composer.phar /var/www/html
 
 #install wp-cli
 cd /var/www/html

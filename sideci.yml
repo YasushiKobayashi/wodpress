@@ -2,11 +2,12 @@ linter:
   code_sniffer:
     options:
       standard: PSR2
-      ignore: vendor
+      dir: wordpress/wp-content/themes/wp-themes/
   phpmd:
     options:
       rule: codesize,naming,custom_rule.xml
-      ignore: vendor
+      dir: wordpress/wp-content/themes/wp-themes/
   eslint:
     options:
       config: ".eslintrc"
+      dir: wordpress/wp-content/themes/wp-themes/
