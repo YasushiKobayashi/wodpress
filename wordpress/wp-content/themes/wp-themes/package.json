@@ -1,5 +1,5 @@
 {
-  "name": "cheerbe",
+  "name": "blog",
   "version": "1.0.0",
   "main": "index.js",
   "author": "ptpadan@gmail.com",
@@ -9,7 +9,8 @@
     "type": "git"
   },
   "scripts": {
-    "build": "gulp sass"
+     "build": "gulp sass",
+     "test": "gulp sasstest"
   },
   "license": "ISC",
   "devDependencies": {
