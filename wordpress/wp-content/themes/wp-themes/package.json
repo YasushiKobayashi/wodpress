@@ -2,10 +2,15 @@
   "name": "cheerbe",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "author": "ptpadan@gmail.com",
+  "description": "build sass",
+  "repository": {
+    "url": "https://github.com/YasushiKobayashi/wordpress",
+    "type": "git"
   },
-  "author": "",
+  "scripts": {
+    "build": "gulp sass"
+  },
   "license": "ISC",
   "devDependencies": {
     "browser-sync": "^2.18.2",

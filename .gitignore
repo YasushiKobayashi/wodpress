@@ -18,7 +18,7 @@ node_modules
 **/.sass-cache
 **/.sass-cache/*
 
-*.phar
+wp-cli.phar
 *.dif
 
 code/app/Config/database.php
