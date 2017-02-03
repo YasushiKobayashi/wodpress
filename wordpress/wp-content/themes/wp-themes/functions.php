@@ -195,3 +195,5 @@ function get_mtime($format)
         return get_the_modified_time($format);
     }
 }
+
+add_filter( 'wp_calculate_image_srcset', '__return_false' );
