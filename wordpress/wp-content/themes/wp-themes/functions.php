@@ -196,4 +196,4 @@ function get_mtime($format)
     }
 }
 
-add_filter( 'wp_calculate_image_srcset', '__return_false' );
+add_filter('wp_calculate_image_srcset', '__return_false');
