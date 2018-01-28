@@ -1,11 +1,5 @@
 version: '2'
 services:
-  app:
-    image: php:7.0-apache
-    ports:
-      - "9000:80"
-    volumes:
-      - ./:/var/www/html
   db:
     image: mysql:5.7
     ports:
@@ -17,3 +11,13 @@ services:
     environment:
       MYSQL_DATABASE: "wordpress"
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+  app:
+    build: .
+    ports:
+      - "9000:80"
+    links:
+      - db
+    depends_on:
+      - db
+    volumes:
+      - ./:/var/www/html
