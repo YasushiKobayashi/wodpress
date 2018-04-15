@@ -9,28 +9,25 @@
     "type": "git"
   },
   "scripts": {
-     "build": "gulp sass",
-     "test": "gulp sasstest"
+    "build": "gulp sass",
+    "test": "gulp sasstest"
   },
   "license": "ISC",
   "devDependencies": {
     "browser-sync": "^2.18.2",
-    "coffee-script": "^1.11.0",
-    "css-mqpacker": "^5.0.1",
+    "css-mqpacker": "^6.0.2",
     "doiuse": "^2.5.0",
     "eslint": "^3.8.0",
     "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^3.1.1",
+    "gulp-autoprefixer": "^5.0.0",
     "gulp-concat": "^2.6.0",
     "gulp-minify-css": "0.3.4",
     "gulp-plumber": "^1.1.0",
-    "gulp-sass": "^2.3.2",
+    "gulp-sass": "^4.0.1",
     "gulp-sass-lint": "^1.3.2",
     "gulp-scss-lint": "^0.4.0",
     "gulp-uglify": "^2.0.0",
     "gulp-util": "^3.0.7"
   },
-  "dependencies": {
-    "coffee-script": "^1.11.1"
-  }
+  "dependencies": {}
 }
