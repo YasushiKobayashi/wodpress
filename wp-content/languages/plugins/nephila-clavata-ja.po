@@ -1,0 +1,71 @@
+# Translation of Plugins - Nephila clavata - Stable (latest release) in Japanese
+# This file is distributed under the same license as the Plugins - Nephila clavata - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2016-12-09 04:20:26+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/2.3.0-alpha\n"
+"Language: ja_JP\n"
+"Project-Id-Version: Plugins - Nephila clavata - Stable (latest release)\n"
+
+#. Author URI of the plugin/theme
+msgid "http://dogmap.jp/"
+msgstr "http://dogmap.jp/"
+
+#. Author of the plugin/theme
+msgid "wokamoto"
+msgstr "wokamoto"
+
+#. Description of the plugin/theme
+msgid "Media uploader for AWS S3.Allows you to mirror your WordPress media uploads over to Amazon S3 for storage and delivery."
+msgstr "WordPress のメディアライブラリにアップロードされたファイルを自動的に Amazon S3 にアップロードして、post_content 内のリンクを S3 の URL に変更します。"
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/wokamoto/nephila-clavata"
+msgstr "https://github.com/wokamoto/nephila-clavata"
+
+#: includes/class-NephilaClavata_Admin.php:257
+msgid "Settings"
+msgstr "設定"
+
+#: includes/class-NephilaClavata_Admin.php:159
+msgid "Done!"
+msgstr "完了"
+
+#: includes/class-NephilaClavata_Admin.php:118
+msgid "Error! : "
+msgstr "エラー: "
+
+#. #-#-#-#-#  tmp-nephila-clavata.pot (Nephila clavata 0.2.5)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: includes/class-NephilaClavata_Admin.php:78
+#: includes/class-NephilaClavata_Admin.php:90
+msgid "Nephila clavata"
+msgstr "Nephila clavata (絡新婦)"
+
+#: includes/class-NephilaClavata_Admin.php:59
+msgid "Storage Class"
+msgstr "ストレージクラス"
+
+#: includes/class-NephilaClavata_Admin.php:58
+msgid "S3 URL"
+msgstr "S3 URL"
+
+#: includes/class-NephilaClavata_Admin.php:57
+msgid "S3 Bucket"
+msgstr "S3 バケット"
+
+#: includes/class-NephilaClavata_Admin.php:56
+msgid "AWS Region"
+msgstr "AWS リージョン"
+
+#: includes/class-NephilaClavata_Admin.php:55
+msgid "AWS Secret Key"
+msgstr "AWS シークレットアクセスキー"
+
+#: includes/class-NephilaClavata_Admin.php:54
+msgid "AWS Access Key"
+msgstr "AWS アクセスキー ID"

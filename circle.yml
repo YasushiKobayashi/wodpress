@@ -32,6 +32,6 @@ dependencies:
     - cd selenium && npm install
 test:
   override:
-    - ./composer/bin/phpcs --report=diff --standard=./composer/ruleset.xml --ignore=*.js,*.css,*.scss wordpress/wp-content/themes/wp-themes/
-    - cd wordpress/wp-content/themes/wp-themes && npm test
+    - ./composer/bin/phpcs --report=diff --standard=./composer/ruleset.xml --ignore=*.js,*.css,*.scss wp-content/themes/wp-themes/
+    - cd wp-content/themes/wp-themes && npm test
     - exit 0
