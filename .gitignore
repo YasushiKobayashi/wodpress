@@ -50,3 +50,4 @@ wp-content/plugins/hello.php
 code/app/Config/database.php
 code/app/Config/core.php
 code/app/Config/tmp
+wp-config.production.php

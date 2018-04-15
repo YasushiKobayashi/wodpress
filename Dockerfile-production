@@ -11,4 +11,7 @@ FROM wordpress:4.9.5-php7.2-apache
 # RUN wget -O - https://nodejs.org/download/release/${NODE_V}/node-${NODE_V}-linux-x64.tar.gz | tar zxf - && \
 #   npm i -g yarn
 
-ADD ./ /var/www/html
+COPY ./ /var/www/html
+
+WORKDIR /var/www/html
+RUN mv -f wp-config.production.php wp-config.php
