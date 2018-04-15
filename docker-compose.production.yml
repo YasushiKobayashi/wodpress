@@ -1,8 +1,9 @@
 version: '2'
 services:
   app:
-    build: .
+    image: wordpress:4.9.5-php7.2-apache
     ports:
       - "80:80"
     volumes:
       - ./:/var/www/html
+    restart: always
